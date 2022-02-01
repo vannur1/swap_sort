@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shuffle and Sort numbers</title>
+    <style>
+      .content {
+        width: 100%;
+        height: 100%;
+      }
+      .rows {
+        margin: 0;
+        padding: 0;
+      }
+
+      .rows li {
+        list-style: none;
+        text-align: center;
+        font-size: 2.5rem;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .buttons {
+        width: 100%;
+      }
+      .btn {
+        outline: none;
+        padding: 10px 10px;
+        background-color: #2b8ead;
+        width: 100px;
+        border: none;
+        color: #fff;
+        margin-top: 2px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .random-nums {
+        width: 100%;
+        position: relative;
+        top: -10px;
+        left: -9px;
+      }
+
+      @media only screen and (min-width: 992px) {
+        .content {
+          display: flex;
+          flex-direction: row-reverse;
+          background-color: #eae7e7 !important;
+        }
+        .rows {
+          display: grid;
+          grid-template-columns: auto auto auto;
+          grid-auto-rows: 200px;
+          padding: 10px;
+        }
+        .btn {
+          display: block;
+        }
+        .btn-sort {
+          margin-top: 0.6rem;
+        }
+        .rows li {
+          border-bottom: none !important;
+        }
+        .list0 {
+          background-color: #2b8ead;
+        }
+        .list1 {
+          background-color: #333333;
+        }
+        .list2 {
+          background-color: #6f98a8;
+        }
+        .list3 {
+          background-color: #bfbfbf;
+        }
+        .list4 {
+          background-color: #efefef;
+        }
+        .list5 {
+          background-color: #2f454e;
+        }
+        .list6 {
+          background-color: #efefef;
+        }
+        .list7 {
+          background-color: #72c3dc;
+        }
+        .list8 {
+          background-color: #6f98a8;
+        }
+      }
+
+      /* Optional code and just for checking.. needs to remove this */
+      @media only screen and (max-device-width: 600px) {
+        .buttons {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+        .content {
+          background-color: #fff;
+        }
+        .random-nums {
+          background-color: #eae7e7;
+          position: relative;
+          top: 0;
+          left: 0;
+        }
+        .btn-sort {
+          margin-left: 0.4rem;
+        }
+        .rows li {
+          border-bottom: 5px solid #fff;
+        }
+        .list0 {
+          border-left: 8px solid #2b8ead;
+        }
+        .list1 {
+          border-left: 8px solid #333333;
+        }
+        .list2 {
+          border-left: 8px solid #6f98a8;
+        }
+        .list3 {
+          border-left: 8px solid #bfbfbf;
+        }
+        .list4 {
+          border-left: 8px solid #efefef;
+        }
+        .list5 {
+          border-left: 8px solid #2f454e;
+        }
+        .list6 {
+          border-left: 8px solid #efefef;
+        }
+        .list7 {
+          border-left: 8px solid #72c3dc;
+        }
+        .list8 {
+          border-left: 8px solid #6f98a8;
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        .buttons {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+        .content {
+          background-color: #fff;
+        }
+        .random-nums {
+          background-color: #eae7e7;
+          position: relative;
+          top: 0;
+          left: 0;
+        }
+        .btn-sort {
+          margin-left: 0.4rem;
+        }
+        .rows li {
+          border-bottom: 5px solid #fff;
+        }
+        .list0 {
+          border-left: 8px solid #2b8ead;
+        }
+        .list1 {
+          border-left: 8px solid #333333;
+        }
+        .list2 {
+          border-left: 8px solid #6f98a8;
+        }
+        .list3 {
+          border-left: 8px solid #bfbfbf;
+        }
+        .list4 {
+          border-left: 8px solid #efefef;
+        }
+        .list5 {
+          border-left: 8px solid #2f454e;
+        }
+        .list6 {
+          border-left: 8px solid #efefef;
+        }
+        .list7 {
+          border-left: 8px solid #72c3dc;
+        }
+        .list8 {
+          border-left: 8px solid #6f98a8;
+        }
+      }
+    </style>
+  </head>
+
+  <body onload="sort()">
+    <div class="content" id="body-content">
+      <div class="buttons">
+        <button class="btn btn-shuffle" onclick="shuffle()">Shuffle</button>
+        <button class="btn btn-sort" onclick="sort()">Sort</button>
+      </div>
+      <div class="random-nums" id="random">Test</div>
+    </div>
+
+    <script defer>
+      var actualArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      var newArray = [];
+
+      // Function to shuffle the array content
+      function shuffleArray(array) {
+        return array.sort(() => Math.random() - 0.5);
+      }
+
+      function sortArray(array) {
+        return array.sort(function (a, b) {
+          return a - b;
+        });
+      }
+
+      // Function to shuffle
+      function shuffle() {
+        newArray = shuffleArray(actualArray);
+        let text = "<ul class='rows'>";
+        let len = newArray.length;
+        for (let i = 0; i < len; i++) {
+          text += "<li class = list" + i + ">" + newArray[i] + "</li>";
+        }
+        text += "</ul>";
+        document.getElementById("random").innerHTML = text;
+      }
+
+      // Function to sort
+      function sort() {
+        if (newArray.length === 0) {
+          var arr1 = sortArray(actualArray);
+        } else {
+          var arr1 = sortArray(newArray);
+        }
+        let lenSort = arr1.length;
+
+        let text = "<ul class='rows'>";
+        for (let i = 0; i < lenSort; i++) {
+          text += "<li class=list" + i + ">" + arr1[i] + "</li>";
+        }
+        text += "</ul>";
+
+        document.getElementById("random").innerHTML = text;
+      }
+    </script>
+  </body>
+</html>
